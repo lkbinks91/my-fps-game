@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     enum menuState
     {
-        MenuTitre, MenuPrincipal
+        MenuTitre, MenuPrincipal, MenuJouer, MenuOptions
     }
 
     [SerializeField]
@@ -15,11 +15,17 @@ public class MenuManager : MonoBehaviour
     private GameObject MenuTitreContainer;
     [SerializeField] 
     private GameObject menuPrincipalContainer;
+    [SerializeField]
+    private GameObject menuJouerContainer;
+    [SerializeField]
+    private GameObject menuOptionsContainer;
     // Start is called before the first frame update
     void Start()
     {
         state = menuState.MenuTitre;
         menuPrincipalContainer.SetActive(false);
+        menuJouerContainer.SetActive(false);
+        menuOptionsContainer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,4 +49,47 @@ public class MenuManager : MonoBehaviour
             state = menuState.MenuTitre;
         }
     }
+    public void OuvrirMenuJouer()
+    {
+        if (menuPrincipalContainer.activeSelf)
+        {
+            menuPrincipalContainer.SetActive(false);
+        }
+        menuJouerContainer.SetActive(true);
+        state = menuState.MenuJouer;
+    }
+
+    public void OuvrirMenuOptions()
+    {
+        menuOptionsContainer.SetActive(true);
+        state = menuState.MenuOptions;
+        menuPrincipalContainer.SetActive(false);
+    }
+
+    public void RetourMenuPrincipal()
+    {
+        if (menuJouerContainer.activeSelf)
+        {
+            menuJouerContainer.SetActive(false);
+        }
+        if (menuOptionsContainer.activeSelf)
+        {
+            menuOptionsContainer.SetActive(false);
+        }
+        menuPrincipalContainer.SetActive(true);
+        state = menuState.MenuPrincipal;
+    }
+
+    // le bouton retour dans menuJouer nous ramene au menu principal
+
+    public void RetourMenuJouer() {  
+        if (menuJouerContainer.activeSelf)
+        {
+            menuJouerContainer.SetActive(false);
+        }
+        menuPrincipalContainer.SetActive(true);
+        state = menuState.MenuPrincipal;
+    }
+
+
 }
