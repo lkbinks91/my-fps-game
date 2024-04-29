@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -80,7 +81,6 @@ public class MenuManager : MonoBehaviour
         state = menuState.MenuPrincipal;
     }
 
-    // le bouton retour dans menuJouer nous ramene au menu principal
 
     public void RetourMenuJouer() {  
         if (menuJouerContainer.activeSelf)
@@ -89,6 +89,11 @@ public class MenuManager : MonoBehaviour
         }
         menuPrincipalContainer.SetActive(true);
         state = menuState.MenuPrincipal;
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene("Level_01");
     }
 
 
