@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 5084360386692700808}
   - component: {fileID: 532571777406369131}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: L_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 7915873430629694258}
   - component: {fileID: 2257974122822834469}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: R_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 3539363281540019861}
   - component: {fileID: 6775792124959952711}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: L_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1695,7 +1695,7 @@ GameObject:
   - component: {fileID: 8368585907656898450}
   - component: {fileID: 3828893552956489255}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: R_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

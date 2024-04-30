@@ -59,5 +59,33 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * sensivity, 0);
         }
+
+        Tirer();
+    }
+
+    void Tirer()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Camera maincamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+
+            Ray ray = new Ray(maincamera.transform.position, maincamera.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Rigidbody rb = hit.rigidbody;
+                if (rb != null)
+                {
+                    Debug.Log("RigidBody");
+                    rb.AddExplosionForce(5f, hit.point, 1f, 1f, ForceMode.Impulse);
+                    Debug.Log(hit.collider.name);
+                }
+            }
+            else
+            {
+                Debug.Log("Rien touche");
+            }
+        }
     }
 }
