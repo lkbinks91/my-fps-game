@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float sensivity = 2f;
     public float lookXLimit = 45f;
 
+   
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
@@ -67,25 +68,46 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Camera maincamera = GameObject.Find("MainCamera").GetComponent<Camera>();
 
-            Ray ray = new Ray(maincamera.transform.position, maincamera.transform.forward);
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log(hit.collider.tag);
+                Debug.Log(hit.collider.name);
+
                 Rigidbody rb = hit.rigidbody;
                 if (rb != null)
                 {
-                    Debug.Log("RigidBody");
-                    rb.AddExplosionForce(5f, hit.point, 1f, 1f, ForceMode.Impulse);
-                    Debug.Log(hit.collider.name);
+                    Debug.Log("rigidbody touche");
+                    
+                    
+                        int degats = 10;
+                        if (hit.collider.CompareTag("Tete"))
+                        {
+                            // Multiplier les dégâts par 4 si c'est un tir à la tête
+                            degats *= 4;
+                        Debug.Log(degats);
+                        }
+                        // Vérifier si le tir a touché un bras ou une jambe
+                        else if (hit.collider.CompareTag("Bras") || hit.collider.CompareTag("Jambe") || hit.collider.CompareTag("Corps"))
+                        {
+                            // Infliger seulement 25% des dégâts de base si c'est un tir dans un membre
+                            degats = Mathf.RoundToInt(degats * 0.25f);
+                        Debug.Log(degats);
+
+                    }
+
+                    // ennemi.SubirDegats(degats);
+
+                    Debug.Log(hit.collider.name + " touché avec " + degats + " dégâts");
+                    }
                 }
             }
             else
             {
-                Debug.Log("Rien touche");
+                Debug.Log("Rien touché");
             }
         }
     }
-}
