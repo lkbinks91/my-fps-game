@@ -10,3 +10,4 @@ Mouvement du personnage:
 Degats sur l'ennemi (Raycast):
                       a. Tirer sur la tete fait 4x les degats de base (40 Pv)
                       b. Tirer sur un membre fait 25% des degats de base (2 Pv)
+                      c. Tirer 3x dans la tete ou 50x dans les membres du corps pour que le personnage soit détruit
