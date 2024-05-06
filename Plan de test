@@ -1,1 +1,12 @@
+Mouvement du personnage:
+                      a.	Les touches W et S permettent d’avancer et de reculer.
+                      b.	Les touches A et D permettent un déplacement latéral (A = Gauche, D =droite)
+                      c.	Bouger la souris vers la gauche fait tourner la caméra vers la gauche
+                      d.	Bouger la souris vers la droite fait tourner la caméra vers la droite
+                      e.	Bouger la souris vers le haut déplace la caméra vers le haut, avec un maximum
+                      f.	Bouger la souris vers le bas déplace la caméra vers le bas, avec un maximum
 
+
+Degats sur l'ennemi (Raycast):
+                      a. Tirer sur la tete fait 4x les degats de base (40 Pv)
+                      b. Tirer sur un membre fait 25% des degats de base (2 Pv)
