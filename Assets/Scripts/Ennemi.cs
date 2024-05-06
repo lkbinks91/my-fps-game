@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ennemi : MonoBehaviour
 {
 
-   /* private int pointsDeVie = 100;
+    private int pointsDeVie = 100;
 
     public void SubirDegats(int degats)
     {
@@ -27,5 +27,5 @@ public class Ennemi : MonoBehaviour
     void Update()
     {
         
-    }*/
+    }
 }

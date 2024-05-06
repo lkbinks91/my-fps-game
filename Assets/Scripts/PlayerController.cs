@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float sensivity = 2f;
     public float lookXLimit = 45f;
 
-   
+
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
@@ -81,28 +82,25 @@ public class PlayerController : MonoBehaviour
                 if (rb != null)
                 {
                     Debug.Log("rigidbody touche");
-                    
-                    
-                        int degats = 10;
-                        if (hit.collider.CompareTag("Tete"))
-                        {
-                            // Multiplier les dégâts par 4 si c'est un tir à la tête
-                            degats *= 4;
-                        Debug.Log(degats);
-                        }
-                        // Vérifier si le tir a touché un bras ou une jambe
-                        else if (hit.collider.CompareTag("Bras") || hit.collider.CompareTag("Jambe") || hit.collider.CompareTag("Corps"))
-                        {
-                            // Infliger seulement 25% des dégâts de base si c'est un tir dans un membre
-                            degats = Mathf.RoundToInt(degats * 0.25f);
-                        Debug.Log(degats);
+
+
+                    int degats = 10;
+                    if (hit.collider.CompareTag("Tete"))
+                    {
+                        // Multiplier les dégâts par 4 si c'est un tir à la tête
+                        degats *= 4;
+                        //  Debug.Log(degats);
 
                     }
+                    // Vérifier si le tir a touché un bras ou une jambe
+                    else if (hit.collider.CompareTag("Bras") || hit.collider.CompareTag("Jambe") || hit.collider.CompareTag("Corps"))
+                    {
+                        // Infliger seulement 25% des dégâts de base si c'est un tir dans un membre
+                        degats = Mathf.RoundToInt(degats * 0.25f);
 
-                    // ennemi.SubirDegats(degats);
-
-                    Debug.Log(hit.collider.name + " touché avec " + degats + " dégâts");
                     }
+                       // Destroy le gameobject quand il a perdu 100pv
+                    rb.GetComponent<Ennemi>().SubirDegats(degats);
                 }
             }
             else
@@ -111,3 +109,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+}
