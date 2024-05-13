@@ -5,6 +5,7 @@ Mouvement du personnage:
                       d.	Bouger la souris vers la droite fait tourner la caméra vers la droite
                       e.	Bouger la souris vers le haut déplace la caméra vers le haut, avec un maximum
                       f.	Bouger la souris vers le bas déplace la caméra vers le bas, avec un maximum
+                      g.  Maintenir Shift + W,A,S,D Fait courir le personnage   
 
 
 Degats sur l'ennemi (Raycast):
