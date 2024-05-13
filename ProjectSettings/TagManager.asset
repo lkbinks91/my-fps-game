@@ -9,6 +9,9 @@ TagManager:
   - Jambe
   - Corps
   - Ennemi
+  - Grenade
+  - Cabin
+  - SpawnGrenade
   layers:
   - Default
   - TransparentFX

@@ -21,11 +21,16 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterController;
 
+    
+    
+    
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false;    
     }
 
     void Update()
@@ -61,6 +66,5 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * sensivity, 0);
         }
-
     }
 }

@@ -28,7 +28,7 @@ public class ArmeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !estEntrainDeTirer)
+        if (Input.GetMouseButtonDown(0) && !estEntrainDeTirer && ammoActuel > 0)
         {
             Tirer(playerCamera);
         }
