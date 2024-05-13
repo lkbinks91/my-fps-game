@@ -11,3 +11,10 @@ Degats sur l'ennemi (Raycast):
                       a. Tirer sur la tete fait 4x les degats de base (40 Pv)
                       b. Tirer sur un membre fait 25% des degats de base (2 Pv)
                       c. Tirer 3x dans la tete ou 50x dans les membres du corps pour que le personnage soit détruit
+
+
+Gestion des Munitions: 
+                      a. Un clic gauche sur la souris fais baisser le nombre de munitions de 1 dans le HUD
+                      b. Après 10 clic, le player n'a plus de balles et doit recharger en appuyant sur "R"
+                      c. Après le premier rechargement, le nombre total de munition du personnage passe de 100 à 90 et à chaque rechargement, le nombre total de munition baisse de 10
+                      d. Quand le joueur a depensé tout ces munitions, il ne peut plus tirer
