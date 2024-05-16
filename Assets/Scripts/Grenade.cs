@@ -96,6 +96,7 @@ public class Grenade : MonoBehaviour
 
                 // Infliger des dégâts à l'ennemi
                hit.GetComponent<Ennemi>().SubirDegats(damage);
+                Debug.Log("Ennemi touché pour " + damage + " dégâts.");
             }
         }
         Destroy(gameObject);

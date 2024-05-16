@@ -12,6 +12,7 @@ TagManager:
   - Grenade
   - Cabin
   - SpawnGrenade
+  - MenuPrincipal
   layers:
   - Default
   - TransparentFX

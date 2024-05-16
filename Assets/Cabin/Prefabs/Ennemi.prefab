@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 4244006232156393535}
   m_Layer: 0
   m_Name: Legs
-  m_TagString: Untagged
+  m_TagString: Jambe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 4726745653157092418}
   m_Layer: 0
   m_Name: Arms
-  m_TagString: Untagged
+  m_TagString: Bras
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

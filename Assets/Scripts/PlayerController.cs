@@ -28,13 +28,20 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+       // Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;    
+        
+
+
+
     }
 
     void Update()
     {
+        if (!canMove) { 
+            return;
+        }
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 

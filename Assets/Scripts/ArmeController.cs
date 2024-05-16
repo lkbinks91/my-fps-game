@@ -12,7 +12,8 @@ public class ArmeController : MonoBehaviour
     private bool estEntrainDeTirer = false;
     private Camera playerCamera;
     public TextMeshProUGUI ammoText;
-   
+
+    public bool EstEntrainDeTirer = true;
 
 
 
@@ -28,6 +29,10 @@ public class ArmeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!EstEntrainDeTirer)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0) && !estEntrainDeTirer && ammoActuel > 0)
         {
             Tirer(playerCamera);
@@ -102,6 +107,7 @@ public class ArmeController : MonoBehaviour
                     {
                         // Multiplier les dégâts par 4 si c'est un tir à la tête
                         degats *= 4;
+                        Debug.Log("Touche à la tête pour " + degats );
                     }
                     else if (hit.collider.CompareTag("Bras") || hit.collider.CompareTag("Jambe") || hit.collider.CompareTag("Corps"))
                     {
