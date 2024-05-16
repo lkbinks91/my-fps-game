@@ -5,6 +5,7 @@ Mouvement du personnage:
                       d.	Bouger la souris vers la droite fait tourner la caméra vers la droite
                       e.	Bouger la souris vers le haut déplace la caméra vers le haut, avec un maximum
                       f.	Bouger la souris vers le bas déplace la caméra vers le bas, avec un maximum
+                      g.  Maintenir Shift + W,A,S,D Fait courir le personnage   
 
 
 Degats sur l'ennemi (Raycast):
@@ -18,3 +19,11 @@ Gestion des Munitions:
                       b. Après 10 clic, le player n'a plus de balles et doit recharger en appuyant sur "R"
                       c. Après le premier rechargement, le nombre total de munition du personnage passe de 100 à 90 et à chaque rechargement, le nombre total de munition baisse de 10
                       d. Quand le joueur a depensé tout ces munitions, il ne peut plus tirer
+
+Grenade:
+                      a. Les grenades sont disponibles sur les cubes "SpawnGrenade"
+                      b. Collisioner une grenade fait ramasser la grenade et affiche le nombre de grenade ramassé près de son icone grenade en haut à droite
+                      c. On appuie sur "G" pour lancer la grenade
+                      d. La grenade explosera à la collision de n'importe quel objet solide
+                      e. La grenade fera des dégats à l'ennemi si le player est bien a 2 unités de l'ennemi
+
