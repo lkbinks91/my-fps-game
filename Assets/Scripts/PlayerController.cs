@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public float gravity = 10f;
     public float sensivity = 2f;
     public float lookXLimit = 45f;
+    private int pointsDeVie = 100;
+    public HealthBar healthBarController;
+    public GameOver gameOver;
+
 
 
     Vector3 moveDirection = Vector3.zero;
@@ -21,20 +25,36 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterController;
 
-    
-    
-    
+    public void SubirDegats(int degats)
+    {
+        pointsDeVie -= degats;
+        healthBarController.UpdateHealthBar(pointsDeVie);
+
+        if (pointsDeVie <= 0)
+        {
+            //Destroy(gameObject);
+            gameOver.ShowGameOver();
+            canMove = false;
+        }
+        healthBarController.UpdateHealthBar(pointsDeVie);
+    }
 
 
     void Start()
     {
-       // Cursor.lockState = CursorLockMode.Locked;
-       // Cursor.visible = false;
+   
+        healthBarController = FindObjectOfType<HealthBar>();
+        if (healthBarController == null)
+        {
+            Debug.LogError("Le script HealthBar n'a pas été trouvé dans la scène.");
+        }
+        else
+        {
+            healthBarController.SetMaxHealth(pointsDeVie);
+            healthBarController.UpdateHealthBar(pointsDeVie);
+        }
+
         characterController = GetComponent<CharacterController>();
-        
-
-
-
     }
 
     void Update()
