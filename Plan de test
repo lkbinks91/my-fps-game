@@ -27,3 +27,12 @@ Grenade:
                       d. La grenade explosera à la collision de n'importe quel objet solide
                       e. La grenade fera des dégats à l'ennemi si le player est bien a 2 unités de l'ennemi
 
+
+Gestion Inventaire & Victoire:
+
+                      a. Il faut trouver les 2 dossiers et la clé pour pouvoir passer la porte et remporter la victoire
+                      b. Foncer dans le dossier pour pouvoir le ramasser (collecte se fait au contact)
+                      c. Si vous ne ramassez pas tout les éléments à ramasser, il vous sera indiquer les éléments manquants
+                      d. Le temps s'arrète quand vous avez tout ramassé et passé la porte, c'est votre temps écoulé
+                      e. À la victoire, le joueur ne peut plus bouger ni tirer et un message de victoire apparait avec un bouton qui ramène au 'MainMenu'
+
