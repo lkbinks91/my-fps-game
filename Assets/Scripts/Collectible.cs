@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string collectibleType;
+    public GameObject collectibleObject;
     public Light emitLight;
     void Start()
     {
@@ -22,7 +22,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Inventaire>().AddCollectible(collectibleType);
+            other.GetComponent<Inventaire>().AddCollectible(collectibleObject);
             emitLight.enabled = false;
             Destroy(gameObject);
         }   

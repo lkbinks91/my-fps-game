@@ -13,6 +13,9 @@ TagManager:
   - Cabin
   - SpawnGrenade
   - MenuPrincipal
+  - DossierA
+  - DossierB
+  - cle
   layers:
   - Default
   - TransparentFX

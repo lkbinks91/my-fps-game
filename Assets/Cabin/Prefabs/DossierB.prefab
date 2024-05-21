@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6604548796703189821}
   m_Layer: 0
   m_Name: DossierB
-  m_TagString: Untagged
+  m_TagString: DossierB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

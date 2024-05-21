@@ -25,7 +25,6 @@ public class Ennemi : MonoBehaviour
 
         if (pointsDeVie <= 0)
         {
-            // Code pour la mort de l'ennemi
             Destroy(gameObject);
         }
     }
@@ -97,25 +96,21 @@ public class Ennemi : MonoBehaviour
 
     private void Fire()
     {
-        // Simuler le tir avec un raycast
         RaycastHit hit;
         if (Physics.Raycast(firePoint.position, firePoint.forward, out hit))
         {
-            // Si le raycast touche la cible, infliger des dégâts
             if (hit.transform == target)
             {
-                hit.transform.GetComponent<PlayerController>().SubirDegats(10);
-                Debug.Log("Tir réussi! Dégâts infligés: 10");
+                hit.transform.GetComponent<PlayerController>().SubirDegats(3);
+                Debug.Log("Tir réussi! Dégâts infligés: 3");
             }
         }
 
-        // Décrémenter les munitions restantes
         currentAmmo--;
     }
 
     private void Reload()
     {
-        // Recharger en remplissant le chargeur
         Debug.Log("Rechargement terminé");
         currentAmmo = magazineCapacity;
         isReloading = false;

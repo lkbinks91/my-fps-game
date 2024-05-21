@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Inventaire : MonoBehaviour
 {
+    public GameObject checkA;
+    public GameObject checkB;
+    public GameObject checkCle;
     // Start is called before the first frame update
-    private List<string> collectibles = new List<string>();
+    private List<GameObject> collectibles = new List<GameObject>();
     void Start()
     {
-        
+        checkA.SetActive(false);
+        checkB.SetActive(false);
+        checkCle.SetActive(false);
     }
 
     // Update is called once per frame
@@ -17,18 +22,35 @@ public class Inventaire : MonoBehaviour
         
     }
 
-    public void AddCollectible(string collectibleType)
+    public void AddCollectible(GameObject collectibleObject)
     {
-        collectibles.Add(collectibleType);
+        collectibles.Add(collectibleObject);
+
+        if (collectibleObject.CompareTag("cle"))
+        {
+            checkCle.SetActive(true);
+        }
+        else if (collectibleObject.CompareTag("DossierA"))
+        {
+            checkA.SetActive(true);
+        }
+        else if (collectibleObject.CompareTag("DossierB"))
+        {
+            checkB.SetActive(true);
+        }
     }
 
     public bool HasKeyAndFolder()
     {
-        return collectibles.Contains("cle") && collectibles.Contains("DossierA") && collectibles.Contains("DossierB");
+        bool hasCle = collectibles.Exists(obj => obj.CompareTag("cle"));
+        bool hasDossierA = collectibles.Exists(obj => obj.CompareTag("DossierA"));
+        bool hasDossierB = collectibles.Exists(obj => obj.CompareTag("DossierB"));
+
+        return hasCle && hasDossierA && hasDossierB;
     }
 
-    public bool HasCollectible(string collectibleType)
+    public bool HasCollectible(GameObject collectibleObject)
     {
-        return collectibles.Contains(collectibleType);
+        return collectibles.Contains(collectibleObject);
     }
 }

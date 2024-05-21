@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
         if (pointsDeVie <= 0)
         {
-            //Destroy(gameObject);
             gameOver.ShowGameOver();
             canMove = false;
         }

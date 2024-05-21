@@ -55,7 +55,6 @@ public class GestionSortie : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Le joueur est sur la porte de sortie");
             if (inventaireJoueur.HasKeyAndFolder())
             {
                 Debug.Log("Le joueur possède tous les objets nécessaires");
@@ -76,19 +75,19 @@ public class GestionSortie : MonoBehaviour
     private void AfficherMessageManqueObjets()
     {
 
-        string message = "Il vous manque les objets suivants pour sortir: ";
+        string message = "Il vous devez trouver TOUT les objets suivants pour sortir: ";
 
      if (!inventaireJoueur.HasKeyAndFolder())
         {
-            if( !inventaireJoueur.HasCollectible("cle"))
+            if( !inventaireJoueur.HasCollectible(GameObject.FindWithTag("cle")))
             {
                 message += "la clé, ";
             }
-            if (!inventaireJoueur.HasCollectible("DossierA"))
+            if (!inventaireJoueur.HasCollectible(GameObject.FindWithTag("DossierA")))
             {
                 message += "le dossier A, ";
             }
-            if (!inventaireJoueur.HasCollectible("DossierB"))
+            if (!inventaireJoueur.HasCollectible(GameObject.FindWithTag("DossierB")))
             {
                 message += "le dossier B, ";
             }
@@ -98,8 +97,6 @@ public class GestionSortie : MonoBehaviour
     private void AfficherVictoire()
     {
         isVictoryDisplayed = true;
-        //Cursor.lockState = CursorLockMode.None;
-       // Cursor.visible = true;
         victoireText.gameObject.SetActive(true);
         playerController.canMove = false;
         armeController.EstEntrainDeTirer = false;
