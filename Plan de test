@@ -36,3 +36,31 @@ Gestion Inventaire & Victoire:
                       d. Le temps s'arrète quand vous avez tout ramassé et passé la porte, c'est votre temps écoulé
                       e. À la victoire, le joueur ne peut plus bouger ni tirer et un message de victoire apparait avec un bouton qui ramène au 'MainMenu'
 
+
+Ennemis Attaque:
+
+                      a. Quand on se rapproche a une certaine distance de l'ennemi, il se met à suivre le player en tirant et fait des dégats au personnage
+                      b. L'ennemi a 33% de chance de toucher le personnage quand il essaie de lui tirer dessus
+                      c. Il tire à une cadence de 1 tir au 2 secondes et fait des dégats de 10pv à chaque fois qu'il réussi à toucher le joueur
+                      d. Il a 15 balles dans son pistolet et quand il lès épuisent, il doit recharger et son rechargement prend 3 secondes
+                      e. Il a un nombre illimité de munitions
+                      f. À sa mort, il est détruit
+                      g. À la mort du joueur, tout les ennemis sont détruits, le jeu s'arrète et un message de d'échec de mission est affiché avec un bouton pour éssayer de nouveau
+                      h. Quand on click sur le bouton pour essayer de nouveau, on réapparait de nouveau dans le jeu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
