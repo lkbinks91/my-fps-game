@@ -96,5 +96,17 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Level_01");
     }
 
+    public void StartNormalGame()
+    {
+        PlayerPrefs.SetString("GameDifficulty", "Normal");
+        LoadGameScene();
+    }
+
+    public void StartDifficultGame()
+    {
+        PlayerPrefs.SetString("GameDifficulty", "Difficult");
+        LoadGameScene();
+    }
+
 
 }

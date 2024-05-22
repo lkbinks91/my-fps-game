@@ -51,7 +51,6 @@ public class ArmeController : MonoBehaviour
             toutesLesArmes.Add(arme);
         }
 
-        // Si la liste toutesLesArmes contient des éléments, ajouter la première arme à l'inventaire
         if (toutesLesArmes.Count > 0)
         {
             AjouterArme(toutesLesArmes[0]);
@@ -157,7 +156,7 @@ public class ArmeController : MonoBehaviour
                 {
                     Debug.Log("rigidbody touche");
 
-                    int degats = 10;
+                    int degats = 25;
                     if (hit.collider.CompareTag("Tete"))
                     {
                         // Multiplier les dégâts par 4 si c'est un tir à la tête

@@ -7,14 +7,16 @@ public class Ennemi : MonoBehaviour
 
     private int pointsDeVie = 100;
     public Transform target; 
-    public float detectionRange = 10f; 
+    public float detectionRange; 
     public float attackRange = 20f;
-    public float moveSpeed = 3f; 
+    public float moveSpeed; 
     public float fireRate = 2f; 
     public float reloadTime = 3f; 
     public int magazineCapacity = 15; 
-    public Transform firePoint; 
+    public Transform firePoint;
 
+
+    private float accuracy = 0.33f;
     private float lastFireTime; 
     private int currentAmmo; 
     private bool isReloading; 
@@ -32,8 +34,13 @@ public class Ennemi : MonoBehaviour
     void Start()
     {
         currentAmmo = magazineCapacity;
-
-
+        DifficulteJeu difficulté = FindObjectOfType<DifficulteJeu>();
+        if (difficulté != null)
+        {
+            detectionRange = difficulté.detectionRange;
+            moveSpeed = difficulté.movementSpeed;
+            accuracy = difficulté.accuracy;
+        }
     }
 
     // Update is called once per frame
@@ -76,7 +83,7 @@ public class Ennemi : MonoBehaviour
         if (Time.time - lastFireTime >= 1f / fireRate)
         {
             // Tirer avec une probabilité de 33% de toucher
-            if (Random.value <= 0.33f)
+            if (Random.value <= accuracy)
             {
                 Fire();
             }
