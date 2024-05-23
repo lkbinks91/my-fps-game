@@ -8,10 +8,13 @@ Mouvement du personnage:
                       g.  Maintenir Shift + W,A,S,D Fait courir le personnage   
 
 
-Degats sur l'ennemi (Raycast):
+Gestion PV (Degats sur l'ennemi):
                       a. Tirer sur la tete fait 4x les degats de base (40 Pv)
                       b. Tirer sur un membre fait 25% des degats de base (2 Pv)
                       c. Tirer 3x dans la tete ou 50x dans les membres du corps pour que le personnage soit détruit
+                      d. Quand l'ennemi meurt il laisse tomber 10 balles
+                      e. Quand on collisione ces balles qui vont appairaitre a la mort de l'ennemi, elles sont ramassés et ajoutés au munitions totale du joueur
+                      f. Le joueur ne peut pas avoir plus que 100 balles en munitions, donc s'il essaie de ramasser des munitions supplémentaire, ces munitions ne seront tout simplement pas ajouté au joueur
 
 
 Gestion des Munitions: 
@@ -19,6 +22,7 @@ Gestion des Munitions:
                       b. Après 10 clic, le player n'a plus de balles et doit recharger en appuyant sur "R"
                       c. Après le premier rechargement, le nombre total de munition du personnage passe de 100 à 90 et à chaque rechargement, le nombre total de munition baisse de 10
                       d. Quand le joueur a depensé tout ces munitions, il ne peut plus tirer
+                      
 
 Grenade:
                       a. Les grenades sont disponibles sur les cubes "SpawnGrenade" (On peut en rammasser qu'une seul à la fois)
@@ -68,6 +72,13 @@ Gestion des armes (submachine gun, Assault rifle):
                       f. La submachine a 30 balles dans le chargeur 
                       g. Le assault Rifle a 20 balles dans le chargeur 
                       h. Le clic gauche sur la souris fait tirer l'arme
+
+
+Particle System:
+
+                      a. Quand on tire avec n'importe quel arme, de la fumée est expulsé au bout de l'arme
+                      b. Quand je tire sur une surface, un splash(DirtSplash - SimpleFX) est effectué à l'endroit visé
+                      c. Quand on ramasse une grenade et qu'on appuie sur 'G', à la collision avec quoi que ce soit, une explosion est effectué
 
   
 
