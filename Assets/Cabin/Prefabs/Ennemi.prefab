@@ -1878,6 +1878,8 @@ MonoBehaviour:
   reloadTime: 3
   magazineCapacity: 30
   firePoint: {fileID: 0}
+  munitionPrefab: {fileID: 7270077503047563122, guid: 277611342d252844783f8c45577deeab, type: 3}
+  munitionAmount: 25
 --- !u!65 &-8367241984986990240
 BoxCollider:
   m_ObjectHideFlags: 0

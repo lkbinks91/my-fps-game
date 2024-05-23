@@ -14,12 +14,15 @@ public class Ennemi : MonoBehaviour
     public float reloadTime = 3f; 
     public int magazineCapacity = 15; 
     public Transform firePoint;
+    public GameObject munitionPrefab;
+    public int munitionAmount = 25;
 
 
     private float accuracy = 0.33f;
     private float lastFireTime; 
     private int currentAmmo; 
-    private bool isReloading; 
+    private bool isReloading;
+    
 
     public void SubirDegats(int degats)
     {
@@ -27,6 +30,7 @@ public class Ennemi : MonoBehaviour
 
         if (pointsDeVie <= 0)
         {
+            DropMunitions();
             Destroy(gameObject);
         }
     }
@@ -121,6 +125,19 @@ public class Ennemi : MonoBehaviour
         Debug.Log("Rechargement terminé");
         currentAmmo = magazineCapacity;
         isReloading = false;
+    }
+
+    private void DropMunitions()
+    {
+        if (munitionPrefab != null)
+        {
+            GameObject munitionObject = Instantiate(munitionPrefab, transform.position, Quaternion.identity);
+            Munition munition = munitionObject.GetComponent<Munition>();
+            if (munition != null)
+            {
+                munition.amount = munitionAmount;
+            }
+        }
     }
 
 

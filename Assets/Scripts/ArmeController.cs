@@ -17,6 +17,9 @@ public class ArmeController : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public Transform pointDeMontageArme;
     public WeaponHud weaponHud;
+    public GameObject flamePrefab;
+    public Transform flashPoint;
+    public GameObject impactEffectPrefab;
 
     public bool EstEntrainDeTirer = true;
 
@@ -143,6 +146,11 @@ public class ArmeController : MonoBehaviour
         {
             ammoActuel--;
             UpdateAmmoUI();
+            if (flamePrefab != null && pointDeMontageArme != null)
+            {
+                GameObject flame = Instantiate(flamePrefab, flashPoint.position, flashPoint.rotation);
+                Destroy(flame, 1.0f );
+            }
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             RaycastHit hit;
 
@@ -179,6 +187,8 @@ public class ArmeController : MonoBehaviour
                         Debug.Log("L'objet touché n'a pas de composant Ennemi.");
                     }
                 }
+                GameObject impactEffect = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactEffect, 0.5f);
             }
             else
             {
@@ -196,12 +206,18 @@ public class ArmeController : MonoBehaviour
                 return; // Ne pas ajouter de doublons
             }
         }
+        nouvelleArme.currentMagazineAmmo = nouvelleArme.maxMagazineCapacity;
+        nouvelleArme.currentTotalAmmo = nouvelleArme.maxAmmoCapacity;
         inventaire.Add(nouvelleArme);
         nouvelleArme.gameObject.SetActive(false); 
     }
 
     void EquipArme(int index)
     {
+        if (armeActuelle != null) {
+            armeActuelle.currentMagazineAmmo = ammoActuel;
+            armeActuelle.currentTotalAmmo = totalAmmo;
+        }
         foreach (Arme arme in inventaire)
         {
             if (arme != null && arme.gameObject != null)
@@ -220,8 +236,8 @@ public class ArmeController : MonoBehaviour
             weaponHud.UpdateWeaponUI(armeActuelle.imageArme, armeActuelle.nom);
 
         }
-        ammoActuel = armeActuelle.maxMagazineCapacity;
-        totalAmmo = armeActuelle.maxAmmoCapacity;
+        ammoActuel = armeActuelle.currentMagazineAmmo;
+        totalAmmo = armeActuelle.currentTotalAmmo;
         UpdateAmmoUI();
     }
     void ChangerArme(int direction)
@@ -236,6 +252,20 @@ public class ArmeController : MonoBehaviour
             indexArmeActuelle = 0;
         }
         EquipArme(indexArmeActuelle);
+    }
+    public void AddAmmo(int amount)
+    {
+        totalAmmo += amount;
+        if (totalAmmo > 100)
+        {
+            totalAmmo = 100;
+        }
+        UpdateAmmoUI();
+        Debug.Log("Munitions ajoutées: " + amount);
+    }
+    public int GetTotalAmmo()
+    {
+        return totalAmmo;
     }
 }
 

@@ -4491,6 +4491,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14233023d97c0eb49b3150aeb6ae7909, type: 3}
+--- !u!1 &1120824057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120824058}
+  m_Layer: 0
+  m_Name: FlashPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120824058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120824057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.505, y: 0.588, z: 0.3605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1850576662}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179320628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2653139923625205779, guid: 384c0038649c67f4e886cd25a3126690, type: 3}
@@ -6949,26 +6980,6 @@ MonoBehaviour:
   checkA: {fileID: 155661130}
   checkB: {fileID: 1231242546}
   checkCle: {fileID: 2022995182}
---- !u!114 &1850576671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850576661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40392ed72dea10c47bbb672b88511ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toutesLesArmes:
-  - {fileID: 571895284}
-  - {fileID: 337411326}
-  inventaire: []
-  ammoText: {fileID: 372579646}
-  pointDeMontageArme: {fileID: 0}
-  weaponHud: {fileID: 0}
-  EstEntrainDeTirer: 1
 --- !u!1001 &1857135146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6994,6 +7005,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 998309332}
     - target: {fileID: 809528983491087760, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
+      propertyPath: flashPoint
+      value: 
+      objectReference: {fileID: 1120824058}
+    - target: {fileID: 809528983491087760, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
+      propertyPath: flamePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 5b6c2f68addb63847b151f0d41a9d3b1, type: 3}
+    - target: {fileID: 809528983491087760, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       propertyPath: weaponImage
       value: 
       objectReference: {fileID: 998309330}
@@ -7009,6 +7028,10 @@ PrefabInstance:
       propertyPath: armes.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 809528983491087760, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
+      propertyPath: impactEffectPrefab
+      value: 
+      objectReference: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
     - target: {fileID: 809528983491087760, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       propertyPath: pointDeMontageArme
       value: 
@@ -7287,6 +7310,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6282236083717576685, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 718048669}
+    - targetCorrespondingSourceObject: {fileID: 6282236083717576685, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1120824058}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9123127508234089401, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       insertIndex: -1
@@ -7294,9 +7320,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9123127508234089401, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850576667}
-    - targetCorrespondingSourceObject: {fileID: 9123127508234089401, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1850576671}
     - targetCorrespondingSourceObject: {fileID: 1337710070094665093, guid: befd7c72f5b846f49a535a4709d09ae1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1830379682}

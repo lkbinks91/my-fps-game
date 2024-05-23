@@ -8,6 +8,8 @@ public class Arme : MonoBehaviour
     public string nom;
     public int maxAmmoCapacity = 100;
     public int maxMagazineCapacity;
+    public int currentMagazineAmmo;
+    public int currentTotalAmmo;
     public GameObject prefab;
     public Texture2D imageArme;
     void Start()
