@@ -15,7 +15,7 @@ public class Ennemi : MonoBehaviour
     public int magazineCapacity = 15; 
     public Transform firePoint;
     public GameObject munitionPrefab;
-    public int munitionAmount = 25;
+    public int munitionAmount = 10;
 
 
     private float accuracy = 0.33f;
