@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ennemi : MonoBehaviour
 {
 
-    private int pointsDeVie = 100;
+    
     public Transform target; 
     public float detectionRange; 
     public float attackRange = 20f;
@@ -17,7 +17,7 @@ public class Ennemi : MonoBehaviour
     public GameObject munitionPrefab;
     public int munitionAmount = 10;
 
-
+    private int pointsDeVie = 100;
     private float accuracy = 0.33f;
     private float lastFireTime; 
     private int currentAmmo; 

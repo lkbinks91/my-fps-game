@@ -8,26 +8,35 @@ public class ArmeController : MonoBehaviour
 {
     public List<Arme> toutesLesArmes; // Toutes les armes disponibles dans le jeu
     public List<Arme> inventaire; // Armes possédées par le joueur
-    private int indexArmeActuelle = 0;
-    private Arme armeActuelle;
-    private int ammoActuel;
-    private int totalAmmo;
-    private bool estEntrainDeTirer = false;
-    private Camera playerCamera;
+    
     public TextMeshProUGUI ammoText;
     public Transform pointDeMontageArme;
     public WeaponHud weaponHud;
     public GameObject flamePrefab;
     public Transform flashPoint;
     public GameObject impactEffectPrefab;
-
     public bool EstEntrainDeTirer = true;
+    public AudioClip fireSound;
+    public AudioClip reloadSound;
+    public AudioClip emptyGun;
+    public AudioClip nonEnemyImpactSound;
+    public AudioClip pickupSound;
+
+
+    private int indexArmeActuelle = 0;
+    private Arme armeActuelle;
+    private int ammoActuel;
+    private int totalAmmo;
+    private bool estEntrainDeTirer = false;
+    private Camera playerCamera;
+    private AudioSource audioSource;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         weaponHud = FindObjectOfType<WeaponHud>();
         GameObject pistolet = GameObject.Find("pistol_001");
         if (pistolet != null)
@@ -129,6 +138,23 @@ public class ArmeController : MonoBehaviour
                 Debug.Log("Rechargement de " + ammoActuel + " balles");
             }
             UpdateAmmoUI();
+
+            if (audioSource != null && reloadSound != null)
+            {
+                audioSource.PlayOneShot(reloadSound);
+            }
+        }
+        else
+        {
+            if (audioSource != null && emptyGun != null)
+            {
+                audioSource.PlayOneShot(emptyGun);
+                Debug.Log("Plus de munitions");
+            }
+            else
+            {
+                Debug.LogError("Audio source or empty gun sound is not assigned.");
+            }
         }
     }
     void UpdateAmmoUI()
@@ -142,15 +168,19 @@ public class ArmeController : MonoBehaviour
             Debug.LogError("Player camera is not assigned.");
             return;
         }
+
         if (ammoActuel > 0)
         {
             ammoActuel--;
             UpdateAmmoUI();
+
+            // Effet de flamme pour le tir
             if (flamePrefab != null && pointDeMontageArme != null)
             {
                 GameObject flame = Instantiate(flamePrefab, flashPoint.position, flashPoint.rotation);
-                Destroy(flame, 1.0f );
+                Destroy(flame, 1.0f);
             }
+
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             RaycastHit hit;
 
@@ -159,40 +189,74 @@ public class ArmeController : MonoBehaviour
                 Debug.Log(hit.collider.tag);
                 Debug.Log(hit.collider.name);
 
+                bool isEnemyHit = false;
                 Rigidbody rb = hit.rigidbody;
                 if (rb != null)
                 {
-                    Debug.Log("rigidbody touche");
-
                     int degats = 25;
                     if (hit.collider.CompareTag("Tete"))
                     {
-                        // Multiplier les dégâts par 4 si c'est un tir à la tête
                         degats *= 4;
                         Debug.Log("Touche à la tête pour " + degats);
                     }
                     else if (hit.collider.CompareTag("Bras") || hit.collider.CompareTag("Jambe") || hit.collider.CompareTag("Corps"))
                     {
-                        // Infliger seulement 25% des dégâts de base si c'est un tir dans un membre
                         degats = Mathf.RoundToInt(degats * 0.25f);
                     }
-                    // Vérifier si le composant Ennemi est attaché à l'objet touché
+
                     Ennemi ennemi = rb.GetComponent<Ennemi>();
                     if (ennemi != null)
                     {
                         ennemi.SubirDegats(degats);
+                        isEnemyHit = true;
                     }
                     else
                     {
                         Debug.Log("L'objet touché n'a pas de composant Ennemi.");
                     }
                 }
+                else
+                {
+                    Debug.Log("L'objet touché n'a pas de rigidbody.");
+                }
+
                 GameObject impactEffect = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactEffect, 0.5f);
+
+                if (isEnemyHit)
+                {
+                    // Jouer le son de tir
+                    if (audioSource != null && fireSound != null)
+                    {
+                        audioSource.PlayOneShot(fireSound);
+                        Debug.Log("Son de tir joué");
+                    }
+                }
+                else
+                {
+                    // Jouer le son d'impact non-ennemi
+                    if (audioSource != null && nonEnemyImpactSound != null)
+                    {
+                        audioSource.PlayOneShot(nonEnemyImpactSound);
+                        Debug.Log("Son impact non ennemi joué");
+                    }
+                }
             }
             else
             {
                 Debug.Log("Rien touché");
+            }
+        }
+        else
+        {
+            if (audioSource != null && emptyGun != null)
+            {
+                audioSource.PlayOneShot(emptyGun);
+                Debug.Log("Plus de munitions");
+            }
+            else
+            {
+                Debug.LogError("Audio source or empty gun sound is not assigned.");
             }
         }
     }
@@ -209,7 +273,12 @@ public class ArmeController : MonoBehaviour
         nouvelleArme.currentMagazineAmmo = nouvelleArme.maxMagazineCapacity;
         nouvelleArme.currentTotalAmmo = nouvelleArme.maxAmmoCapacity;
         inventaire.Add(nouvelleArme);
-        nouvelleArme.gameObject.SetActive(false); 
+        nouvelleArme.gameObject.SetActive(false);
+
+        if (audioSource != null && pickupSound != null)
+        {
+            audioSource.PlayOneShot(pickupSound);
+        }
     }
 
     void EquipArme(int index)

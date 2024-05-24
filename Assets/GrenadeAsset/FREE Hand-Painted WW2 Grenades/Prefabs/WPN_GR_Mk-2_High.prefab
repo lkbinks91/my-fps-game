@@ -78,6 +78,9 @@ MonoBehaviour:
   grenadeText: {fileID: 0}
   aEteLancee: 0
   prefabExplosion: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
+  grenadePrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  grenadeForce: 25
 --- !u!135 &4112593925204450281
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -97,7 +100,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4753607774074791028
 GameObject:

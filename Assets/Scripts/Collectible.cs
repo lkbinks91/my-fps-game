@@ -7,8 +7,15 @@ public class Collectible : MonoBehaviour
     // Start is called before the first frame update
     public GameObject collectibleObject;
     public Light emitLight;
+    public AudioClip pickupSound;
+    public AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         
     }
 
@@ -24,7 +31,11 @@ public class Collectible : MonoBehaviour
         {
             other.GetComponent<Inventaire>().AddCollectible(collectibleObject);
             emitLight.enabled = false;
-            Destroy(gameObject);
-        }   
+        if(audioSource != null && pickupSound != null)
+            {
+            audioSource.PlayOneShot(pickupSound);
+            }
+        }  
+        Destroy(gameObject, pickupSound.length);
     }
 }
