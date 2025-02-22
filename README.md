@@ -16,7 +16,7 @@ etc.
 ## Démo vidéo
 Cliquez sur la miniature ci-dessous pour visionner la démonstration du prototype :
 
-[![Miniature de la vidéo](assets/img/thumbnail.png "Démonstration du prototype FPS")](https://youtu.be/3mprTev3IAA)
+[![Miniature de la vidéo](./Assets/img/thumbnail.png "Démonstration du prototype FPS")](https://youtu.be/3mprTev3IAA)
 
 ---
 
