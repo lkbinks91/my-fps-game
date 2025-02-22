@@ -16,11 +16,7 @@ etc.
 ## Démo vidéo
 Cliquez sur la miniature ci-dessous pour visionner la démonstration du prototype :
 
-[![Miniature de la vidéo](assets/thumbnail.png "Démonstration du prototype FPS")](https://youtu.be/3mprTev3IAA)
-
-> **Remarque** :  
-> - Le fichier `thumbnail.png` doit être placé dans un dossier `assets`.  
-> - Vérifiez que le chemin `assets/thumbnail.png` est correct par rapport à l’emplacement du `README.md`.  
+[![Miniature de la vidéo](assets/img/thumbnail.png "Démonstration du prototype FPS")](https://youtu.be/3mprTev3IAA)
 
 ---
 
